@@ -16,19 +16,21 @@ class LinkedList:
         self.head: Optional[Node] = None
 
     # Traversal methods
-    def print_list(self) -> None:
+    def print_list(self, detail: str = None) -> None:
         """
         Traverse through the linked list and print out it's contents
         """
         if self.head:
             cursor: Optional[Node] = self.head
 
+            if detail:
+                print(f"\n[{detail}]")
+
             print("-----")
 
             while cursor is not None:
                 print(f"[{cursor.data}]")
                 cursor = cursor.next
-            print("-----")
 
     # Insertion methods
     def insert_at_head(self, data: int) -> None:
@@ -96,3 +98,17 @@ class LinkedList:
 
         if self.head:
             self.head = self.head.next
+
+    def delete_at_tail(self) -> None:
+        """
+        Delete the last element in a linked list
+        """
+
+        if self.head:
+            cursor = self.head
+
+            while (cursor.next) is not None:
+                if cursor.next.next is None:
+                    cursor.next = None
+                else:
+                    cursor = cursor.next
