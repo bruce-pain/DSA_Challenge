@@ -23,9 +23,12 @@ class LinkedList:
         if self.head:
             cursor: Optional[Node] = self.head
 
+            print("-----")
+
             while cursor is not None:
                 print(f"[{cursor.data}]")
                 cursor = cursor.next
+            print("-----")
 
     # Insertion methods
     def insert_at_head(self, data: int) -> None:
@@ -76,9 +79,20 @@ class LinkedList:
                     temp_node = cursor.next
                     cursor.next = new_node
                     new_node.next = temp_node
-                    break
+                    return
                 else:
                     cursor = cursor.next
+                    counter += 1
 
             if counter < index:
                 print("InsertError: index out of range")
+
+    # Deletion methods
+
+    def delete_at_head(self) -> None:
+        """
+        Delete the first element in a linked list
+        """
+
+        if self.head:
+            self.head = self.head.next
